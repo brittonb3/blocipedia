@@ -3,6 +3,9 @@ source 'https://rubygems.org'
  # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
  gem 'rails', '4.2.5'
 
+ gem 'devise'
+
+
  group :production do
    gem 'pg'
    gem 'rails_12factor'
@@ -18,7 +21,7 @@ source 'https://rubygems.org'
  gem 'jquery-rails'
  gem 'turbolinks'
  gem 'bootstrap'
- gem 'figaro'
+ gem 'figaro', '1.0'
  gem 'pry'
 
  group :development, :test do

@@ -11,6 +11,7 @@
     <ul class="nav nav-tabs">
       <li><%= link_to "Blocipedia", welcome_index_path %></li>
       <li><%= link_to "About", welcome_about_path %></li>
+      <li><%= link_to "Wikis", root_path %></li>
       <div class="pull-right user-info">
         <% if user_signed_in? %>
           Signed in as: <strong><%= current_user.email %></strong> |
@@ -22,10 +23,9 @@
       </div>
     </ul>
   </div>
-
+<div class="container">
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-<div class="container">
 <%= yield %>
 </div>
 

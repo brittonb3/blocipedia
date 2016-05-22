@@ -5,6 +5,8 @@ source 'https://rubygems.org'
 
  gem 'devise'
 
+ gem "pundit"
+
 
  group :production do
    gem 'pg'

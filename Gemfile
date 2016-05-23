@@ -7,6 +7,8 @@ source 'https://rubygems.org'
 
  gem "pundit"
 
+ gem 'stripe'
+
 
  group :production do
    gem 'pg'

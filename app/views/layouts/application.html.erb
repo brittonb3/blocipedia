@@ -18,7 +18,7 @@
           <% if current_user.standard? %>
             <strong>Standard User</strong> | <%= link_to "Upgrade to Premium", new_charge_url %> |
           <% elsif current_user.premium? %>
-            <strong>Premium User</strong> | <%= link_to "Downgrade to Standard", downgrade_url, data: {confirm: 'Are you sure you want to Downgrade to Standard?'} %> |
+            <strong>Premium User</strong> | <%= link_to "Downgrade to Standard", downgrade_url, data: {confirm: 'Are you sure you want to Downgrade to Standard? Your private wikis will become public!'} %> |
           <% else %>
             <strong>Admin User</strong> |
           <% end %>

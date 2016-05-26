@@ -29,8 +29,12 @@ class ChargesController < ApplicationController
   end
 
   def downgrade
+    current_user.wikis.each do |wiki|
+      wiki.update_attributes!(private: false)
+    end
     current_user.standard!
     flash[:notice] = "#{current_user.email} you have been downgraded to Standard."
     redirect_to root_path
   end
+
 end

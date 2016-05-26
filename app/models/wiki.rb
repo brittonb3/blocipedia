@@ -3,5 +3,11 @@ class Wiki < ActiveRecord::Base
   validates :title, length: { minimum: 5 }, presence: true
   validates :body, length: { minimum: 20 }, presence: true
 
-scope :visible_to, -> (user) { user ? all : where(private: false) }
-end
+  scope :visible_to, -> (user) do
+      if user.admin? || user.premium?
+        all
+      else
+        where(private: [false, nil])
+      end
+    end
+ end

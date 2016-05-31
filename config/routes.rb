@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'downgrade' => 'charges#downgrade'
 
   resources :wikis
+  resources :collaborators
 
   # devise_for :users
 

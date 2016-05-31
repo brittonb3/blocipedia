@@ -1,6 +1,6 @@
 class WikisController < ApplicationController
   def index
-    @wikis = Wiki.visible_to(current_user)
+    @wikis = policy_scope(Wiki)
   end
 
   def show
@@ -29,6 +29,7 @@ class WikisController < ApplicationController
 
   def edit
     @wiki = Wiki.find(params[:id])
+    @users = User.all
   end
 
   def update
@@ -37,8 +38,13 @@ class WikisController < ApplicationController
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
     @wiki.private = params[:wiki][:private]
-
+    @wiki.collaborators.delete_all
     if @wiki.save
+      if params[:collaborator_ids]
+        params[:collaborator_ids].each do |collab_id|
+          Collaborator.create({user_id: collab_id, wiki_id: params[:id]})
+        end
+      end
       flash[:notice] = "Wiki was successfully updated."
       redirect_to @wiki
     else
